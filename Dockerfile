@@ -17,6 +17,7 @@ RUN composer install
 RUN chgrp -R www-data .
 RUN chmod -R 775 ./storage
 COPY laravel.conf /etc/apache2/sites-available
+COPY env ./.env
 RUN a2dissite 000-default.conf
 RUN a2ensite laravel.conf
 RUN a2enmod rewrite
